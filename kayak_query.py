@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 
+
 def kayak_query(city_from_ida,city_to_ida,Date,leg):
         
     options = webdriver.ChromeOptions()
@@ -29,7 +30,8 @@ def kayak_query(city_from_ida,city_to_ida,Date,leg):
     precos = []
     for price in prices:
         if price.text != "":
-            preco = int(price.text.replace("R$","").strip())
+            price = price.text.replace(".","")
+            preco = int(price.replace("R$","").strip())
             precos.append(preco)
     driver.close()
     driver.quit()
