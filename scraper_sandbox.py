@@ -16,7 +16,7 @@ wb = xw.Book('DB.xlsx')
 sheet = wb.sheets['Plan1']
 
 sheet.range(1,5).value = datetime.now()
-i = 13
+i = 2
 while(sheet.range(34,1).value!=''):
     #Define the cities to search for
     city_from_ida =  sheet.range(i,2).value

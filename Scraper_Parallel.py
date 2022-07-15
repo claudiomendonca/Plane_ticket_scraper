@@ -4,6 +4,7 @@ from datetime import datetime
 import xlwings as xw
 from kayak_query import kayak_query
 import concurrent.futures
+import multiprocessing
 
 #Access the Database to get the dates and cities
 wb = xw.Book('DB.xlsx')
@@ -35,13 +36,22 @@ def read_database(i):
 
 def teste(i):
     print('started'+str(i))
+    
+if __name__ == '__main__':
+    with multiprocessing.Pool() as pool:
+        pool.map(read_database,[2,3,4,5,6,7,8,9,10,11])
 
-#run read_database function with concurrent futures
-with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
-    executor.submit(teste, [1,2,3,4,5,6,7])   
-#run read_database function with concurrent futures
-#with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
-#    executor.submit(read_database, range(2,last_i))
+
+
+# #run read_database function with concurrent futures
+# with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+#     executor.submit(teste, [2,3]) 
+
+
+    
+# #run read_database function with concurrent futures
+# with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+#     executor.submit(read_database, range(2,last_i))
 
 #wb.save()
 #wb.close()
