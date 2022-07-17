@@ -39,7 +39,7 @@ def teste(i):
     
 if __name__ == '__main__':
     with multiprocessing.Pool() as pool:
-        pool.map(read_database,[2,3,4,5,6,7,8,9,10,11])
+        pool.map(read_database,list(range(2,last_i)))
 
 
 
